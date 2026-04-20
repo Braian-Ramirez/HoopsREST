@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoopsREST - Basketball Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🏀</span>
+                <h1>Hoops<span>REST</span></h1>
+            </div>
+            <p class="subtitle">Equipos y Jugadores API Demo</p>
+            <div id="auth-status" class="auth-status">
+                <!-- Se llena con JS -->
+                <a href="/auth.html" class="primary-btn sm">Iniciar Sesión</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="api-visualization">
+                <div class="console-box">
+                    <div class="console-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="title">REST Monitor</span>
+                    </div>
+                    <div id="api-log" class="console-content">
+                        <p class="empty-log">Esperando peticiones...</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="dashboard-grid">
+                <!-- Data List -->
+                <section class="card players-list-section">
+                    <div class="card-header">
+                        <h2>Jugadores del Equipo</h2>
+                        <button id="refresh-btn" class="icon-btn">🔄</button>
+                    </div>
+                    <div class="players-table-container">
+                        <table id="players-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Posición</th>
+                                    <th>Equipo</th>
+                                    <th>Nº</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="players-body">
+                                <!-- Dynamic content -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination-controls">
+                        <button id="prev-page" class="secondary-btn sm">Anterior</button>
+                        <span id="page-info">Página 1 de 1</span>
+                        <button id="next-page" class="secondary-btn sm">Siguiente</button>
+                    </div>
+                </section>
+
+                <!-- Form -->
+                <section class="card form-section">
+                    <h2 id="form-title">Añadir Jugador</h2>
+                    <form id="player-form">
+                        <input type="hidden" id="player-id">
+                        <div class="input-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required placeholder="Ej: Michael Jordan">
+                        </div>
+                        <div class="input-group">
+                            <label for="team_id">Equipo</label>
+                            <select id="team_id" required>
+                                <option value="">Cargando equipos...</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="position">Posición</label>
+                                <select id="position" required>
+                                    <option value="">Selecciona posición</option>
+                                    <option value="Guard">Base (Guard)</option>
+                                    <option value="Shooting Guard">Escolta (Shooting Guard)</option>
+                                    <option value="Small Forward">Alero (Small Forward)</option>
+                                    <option value="Power Forward">Ala-pívot (Power Forward)</option>
+                                    <option value="Center">Pívot (Center)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="number">Dorsal</label>
+                                <input type="number" id="number" min="0" max="99" value="0">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="submit-btn" class="primary-btn">Guardar Jugador</button>
+                            <button type="button" id="cancel-btn" class="secondary-btn hidden">Cancelar</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
